@@ -108,18 +108,19 @@ describe("name.js", function () {
             var name = faker.name.findName();
         });
     });
-
     describe("title()", function () {
-      it("returns a random title", function () {
-          sinon.stub(faker.name, 'title').returns('Lead Solutions Supervisor');
+        it("returns a random title", function () {
+            sinon.stub(faker.name, 'title').returns('Lead Solutions Supervisor');
+  
+            var title = faker.name.title();
+  
+            assert.equal(title, 'Lead Solutions Supervisor');
+  
+            faker.name.title.restore();
+          });
+      });
+  
 
-          var title = faker.name.title();
-
-          assert.equal(title, 'Lead Solutions Supervisor');
-
-          faker.name.title.restore();
-        });
-    });
 
     describe("jobTitle()", function () {
         it("returns a job title consisting of a descriptor, area, and type", function () {
@@ -141,6 +142,7 @@ describe("name.js", function () {
             faker.name.jobType.restore();
         });
     });
+
 
     describe("prefix()", function () {
         describe('when using a locale with gender specific name prefixes', function () {
